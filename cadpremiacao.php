@@ -30,7 +30,7 @@ include "config.php";
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Data do sorteio</label>
-                  <input type="text" class="form-control" name="data" id="exampleInputEmail1" placeholder="">
+                  <input type="text" class="form-control" name="data" id='data' id="exampleInputEmail1" placeholder="">
                 </div>
                 
                 <div class="form-group">
@@ -61,6 +61,7 @@ include "config.php";
 if (isset($_POST["enviar"])){
   
   $data= $_POST["data"];
+ 
   $premio= $_POST["premio"];
   $image_name = $_FILES['photo']['name'];
 			$image_temp = $_FILES['photo']['tmp_name'];
@@ -71,17 +72,16 @@ if (isset($_POST["enviar"])){
 			move_uploaded_file($image_temp, "uploadspremiacao/".$image);
   
 
-      $sql = "INSERT INTO premiacao (datasorteio,premio,img)
+      $sql = "INSERT INTO premiacao (data,premio,location)
       VALUES ('$data','$premio','$location')";
       
       if ($conn->query($sql) === TRUE) {
-       // echo "<script>window.location = 'cadpremiacao.php'</script>";
+        echo "<script>window.location = 'cadastropremiacao.php'</script>";
       } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
       }
    
   
-   
     
   
 
@@ -157,5 +157,21 @@ if (isset($_POST["enviar"])){
 <script src="dist/js/demo.js"></script>
 </body>
 </html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+<script>
+    $(document).ready(function () { 
+        var $seuCampoCpf = $("#data");
+        $seuCampoCpf.mask('00/00/0000', {reverse: true});
+    });
+    $(document).ready(function () { 
+        var $seuCampoCpf = $("#data1");
+        $seuCampoCpf.mask('00/00/0000', {reverse: true});
+    });
+    $(document).ready(function () { 
+        var $seuCampoCpf = $("#data2");
+        $seuCampoCpf.mask('00/00/0000', {reverse: true});
+    });
+</script>
+
 
 

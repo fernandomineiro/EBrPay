@@ -8,63 +8,49 @@
             </div>
             <div class="modal-body">
 			<div class="container-fluid">
-			<form method="POST" action="crudmodal2.php?id=<?php echo $row['id']; ?>">
+			<form method="POST" action="crudmodalsorteio.php?id=<?php echo $row['id']; ?>">
 				<div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Nome:</label>
+						<label class="control-label" style="position:relative; top:7px;">Data premiação:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>">
+						<input type="text" class="form-control" name="data" value="<?php echo $row['datasorteio']; ?>">
 					</div>
 				</div>
 				<div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Telefone:</label>
+						<label class="control-label" style="position:relative; top:7px;">Data início:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" required required class="form-control" name="telefone" value="<?php echo $row['sms']; ?> ">
+						<input type="text" required required class="form-control" name="inicio" value="<?php echo $row['datainicio']; ?> ">
 					</div>
 				</div>
                 <div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Sobrenome:</label>
+						<label class="control-label" style="position:relative; top:7px;">Data fim:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="sobrenome" value="<?php echo $row['sobrenome']; ?>">
+						<input type="text" class="form-control" name="fim" value="<?php echo $row['datafim']; ?>">
 					</div>
 				</div>
                 <div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Empresa:</label>
+						<label class="control-label" style="position:relative; top:7px;">Tipo:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="empresa" value="<?php echo $row['empresa']; ?>">
+						<input type="text" class="form-control" name="tipo" value="<?php echo $row['premiacao']; ?>">
 					</div>
 				</div>
-                <div class="row form-group">
+				<div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Estado:</label>
+						<label class="control-label" style="position:relative; top:7px;">Imagem:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="estado" value="<?php echo $row['estado']; ?>">
-					</div>
+								
+								<input class="form-control" type="file" value="<?php echo $fetch['image']; ?>" name="image">
+							</div>
 				</div>
-                <div class="row form-group">
-					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Cidade:</label>
-					</div>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="cidade" value="<?php echo $row['cidade']; ?>">
-					</div>
-				</div>
-                <div class="row form-group">
-					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Data de nacimento:</label>
-					</div>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="datadenascimento" value="<?php echo $row['datadenascimento']; ?>">
-					</div>
-				</div>
+                
 				
             </div> 
 			</div>
@@ -84,11 +70,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Deletar telefone</h4></center>
+                <center><h4 class="modal-title" id="myModalLabel">Deletar sorteio</h4></center>
             </div>
             <div class="modal-body">	
-            	<p class="text-center">Vc quer mesmo deletar o telefone?</p>
-				<h2 class="text-center"><?php echo $row['nome'].'do telefone '.$row['sms']; ?></h2>
+            	<p class="text-center">Vc quer mesmo deletar o sorteio?</p>
+				<h2 class="text-center"><?php echo $row['datasorteio'].'do sorteio '.$row['premiacao']; ?></h2>
 			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
