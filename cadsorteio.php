@@ -22,23 +22,23 @@ include "config.php";
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Cadastro de premiação</h3>
+              <h3 class="box-title">Cadastro de sorteio</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" action="" method="POST" enctype="multipart/form-data">
               <div class="box-body">
-                <div class="form-group">
+              <div class="form-group">
                   <label for="exampleInputEmail1">Data do sorteio</label>
-                  <input type="text" class="telefone" name="telefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+                  <input type="text" class="form-control" id='data2' name="data" id="exampleInputEmail1" placeholder="">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Data do inicio</label>
-                  <input type="text" class="form-control" name="inicio" id="exampleInputEmail1" placeholder="">
+                  <input type="text" class="form-control" id='data1' name="inicio" id="exampleInputEmail1" placeholder="">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Data do fim</label>
-                  <input type="text" class="form-control" name="fim" id="exampleInputEmail1" placeholder="">
+                  <input type="text" class="form-control" id='data22' name="fim" id="exampleInputEmail1" placeholder="">
                 </div>
                 
                 <div class="form-group">
@@ -49,17 +49,9 @@ include "config.php";
                   <option value="giro">Tripla</option>
                 </select>
               </div>
-              <input type="text" id="campoData">
-<input type="text" id="campoTelefone">
-<input type="text" id="campoSenha">
+              
  
-<script>
-jQuery(function($){
-$("#campoData").mask("99/99/9999");
-$("#campoTelefone").mask("(999) 999-9999");
-$("#campoSenha").mask("***-****");
-});
-</script>
+
               <div class="form-group">
                   <label for="exampleInputFile">Prêmio</label>
                   <input type="file" name="photo" class="font"   required> 
@@ -89,20 +81,21 @@ if (isset($_POST["enviar"])){
       $extension = explode('.', $image_name);
       
       $image = time().".".end($extension);
-      $location="uploadspremiacao/" . $image;
-			move_uploaded_file($image_temp, "uploadspremiacao/".$image);
+      $location="uploadssorteio/" . $image;
+			move_uploaded_file($image_temp, "uploadssorteio/".$image);
   
 
-      $sql = "INSERT INTO premiacao (datasorteio,premio,img)
-      VALUES ('$data','$premio','$location')";
+      $sql = "INSERT INTO sorteio (datasorteio,datainicio,datafim ,premiacao,img)
+      VALUES ('$data','$inicio','$fim','$tipo','$location')";
       
       if ($conn->query($sql) === TRUE) {
-       // echo "<script>window.location = 'cadpremiacao.php'</script>";
+        echo "<script>window.location = 'cadsorteio.php'</script>";
       } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
       }
    
   
+   
    
     
   
@@ -252,5 +245,19 @@ if (isset($_POST["enviar"])){
 </script>
 </body>
 </html>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+<script>
+    $(document).ready(function () { 
+        var $seuCampoCpf = $("#data");
+        $seuCampoCpf.mask('00/00/0000', {reverse: true});
+    });
+    $(document).ready(function () { 
+        var $seuCampoCpff = $("#data1");
+        $seuCampoCpff.mask('00/00/0000', {reverse: true});
+    });
+    $(document).ready(function () { 
+        var $seuCampoCpfff = $("#data22");
+        $seuCampoCpfff.mask('00/00/0000', {reverse: true});
+    });
+</script>
 

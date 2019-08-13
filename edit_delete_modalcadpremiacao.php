@@ -4,66 +4,35 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Editar sms</h4></center>
+                <center><h4 class="modal-title" id="myModalLabel">Editar premiação</h4></center>
             </div>
             <div class="modal-body">
 			<div class="container-fluid">
-			<form method="POST" action="crudmodal2.php?id=<?php echo $row['id']; ?>">
+			<form method="POST" action="crudmodalpremiacao.php?id=<?php echo $row['id']; ?>">
 				<div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Nome:</label>
+						<label class="control-label" style="position:relative; top:7px;">Data:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>">
+						<input type="text" class="form-control" name="data" value="<?php echo $row['data']; ?>">
 					</div>
 				</div>
 				<div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Telefone:</label>
+						<label class="control-label" style="position:relative; top:7px;">Premio:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" required required class="form-control" name="telefone" value="<?php echo $row['sms']; ?> ">
+						<input type="text" required required class="form-control" name="premio" value="<?php echo $row['premio']; ?> ">
 					</div>
 				</div>
-                <div class="row form-group">
+				<div class="row form-group">
 					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Sobrenome:</label>
+						<label class="control-label" style="position:relative; top:7px;">Imagem:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="sobrenome" value="<?php echo $row['sobrenome']; ?>">
-					</div>
-				</div>
-                <div class="row form-group">
-					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Empresa:</label>
-					</div>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="empresa" value="<?php echo $row['empresa']; ?>">
-					</div>
-				</div>
-                <div class="row form-group">
-					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Estado:</label>
-					</div>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="estado" value="<?php echo $row['estado']; ?>">
-					</div>
-				</div>
-                <div class="row form-group">
-					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Cidade:</label>
-					</div>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="cidade" value="<?php echo $row['cidade']; ?>">
-					</div>
-				</div>
-                <div class="row form-group">
-					<div class="col-sm-2">
-						<label class="control-label" style="position:relative; top:7px;">Data de nacimento:</label>
-					</div>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="datadenascimento" value="<?php echo $row['datadenascimento']; ?>">
-					</div>
+								
+								<input class="form-control" type="file"  name="image">
+							</div>
 				</div>
 				
             </div> 
@@ -84,15 +53,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Deletar telefone</h4></center>
+                <center><h4 class="modal-title" id="myModalLabel">Deletar premio</h4></center>
             </div>
             <div class="modal-body">	
-            	<p class="text-center">Vc quer mesmo deletar o telefone?</p>
-				<h2 class="text-center"><?php echo $row['nome'].'do telefone '.$row['sms']; ?></h2>
+            	<p class="text-center">Vc quer mesmo deletar o premio?</p>
+				<h2 class="text-center"><?php echo $row['data'].'do telefone '.$row['premio']; ?></h2>
 			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-                <a href="crudmodal2.php?id=<?php echo $row['id']; ?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Sim</a>
+                <a href="crudmodalpremiacao.php?id=<?php echo $row['id']; ?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Sim</a>
             </div>
  
         </div>

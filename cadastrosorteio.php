@@ -1,5 +1,6 @@
 <?php
 include "menu.php";
+include "config.php";
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -32,26 +33,42 @@ include "menu.php";
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+                
                 <tr>
-                  <th>Função</th>
-                  <th>Email</th>
-                  <th>Senha</th>
+                  <th>Data premiação</th>
+                  <th>Data início</th>
+                  <th>Data fim</th>
+                  <th>Tipo</th>
+                  <th>Imagem</th>
                   <th>Ação</th>
                   
                 </tr>
+                
                 </thead>
                 <tbody>
+                <?php
+                $sql = "SELECT * FROM sorteio";
+                $result = $conn->query($sql);
+                
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                ?>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
+                  <td><?php echo $row['datasorteio']; ?></td>
+                  <td><?php echo $row['datainicio']; ?></td>
+                  <td><?php echo $row['datafim']; ?></td>
+                  <td><?php echo $row['premiacao']; ?></td>
+                  <td><img src="<?php echo $row['img']?>" height="50px" width="100px"/></td>
                   <td><a href="#edit_<?php echo $row['id']; ?>" class="btn btn-success btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                   <a href="#delete_<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> Deletar</a></td>
                   <?php include('edit_delete_modalcadsorteio.php'); ?>
                   
                 </tr>
+                <?php
+                  }
+                }
+                ?>
                
                 </tbody>
                 
